@@ -97,14 +97,7 @@
   color: #013243;
   font-family: "Indie Flower", cursive;
 }
-.card .details h4,
-.card .details .color.margin {
-  font-family: "Amatic SC", cursive;
-  font-size: 26px;
-  margin-bottom: 10px;
-  transform: rotate(-7deg);
-  text-align: center;
-}
+
 .recipient-name,
 .text-right {
   font-family: "Indie Flower", cursive;
