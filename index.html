@@ -6,40 +6,45 @@
     <title>MERRY CHRISTMAS</title>
     <link rel="stylesheet" href="noel.css" />
   </head>
-
   <body>
-    <audio id="audio" src="uto/giangsinh.mp3"></audio>
+    <audio id="audio" src="uto/giangsinh.mp3" loop></audio>
 
-    <div id="as" class="christmas-message">Merry Christmas</div>
-    <div class="tree-container">
-      <img
-        src="https://khoinguonsangtao.vn/wp-content/uploads/2022/12/ve-cay-thong-noel.jpg"
-        alt="Cây thông"
-        class="tree-icon"
-      />
+    <div id="welcomeScreen" class="welcome-container">
+      <div class="welcome-card">
+        <h1 class="welcome-title">Merry Christmas</h1>
+        <p class="welcome-sub">Gửi món quà nhỏ đến bạn...</p>
+        <input
+          type="text"
+          id="userName"
+          placeholder="Nhập tên của bạn nhé..."
+          autocomplete="off"
+        />
+        <button id="startButton">Khám Phá Ngay</button>
+      </div>
     </div>
 
-    <div class="container">
-      <button id="showButton">=> Nhấp Zô <=</button>
-    </div>
+    <div id="mainContent" class="hidden">
+      <div class="container">
+        <button id="showButton" class="hidden">Mở lại thiệp ❤️</button>
+      </div>
 
-    <div id="guideInfo" class="hidden">
-      <button id="closeButton" class="close-btn">X</button>
-      <div id="ax" class="card">
-        <div class="imgBox">
-          <div class="bark"></div>
-        </div>
-        <div class="details">
-          <h4 class="color margin">MERRY CHRISTMAS</h4>
-          <p>Đêm Noel, tuyết trắng phủ đầy</p>
-          <p>Nhớ thương người, trao nhau nụ cười</p>
-          <p>Chúc bạn Giáng sinh an lành mãi</p>
-          <p>Niềm vui, hạnh phúc trọn cuộc đời</p>
-          <p class="text-right">Me Ri Chút Mớt</p>
-          <p class="text-right">♥Tr Van Khoan♥</p>
+      <div id="guideInfo" class="hidden">
+        <button id="closeButton" class="close-btn">X</button>
+        <div id="ax" class="card">
+          <div class="imgBox">
+            <div class="bark"></div>
+          </div>
+          <div class="details">
+            <p class="recipient-name">Gửi: <span id="displayName"></span></p>
+            <h4 class="color margin">MERRY CHRISTMAS</h4>
+            <p>Chúc bạn một mùa Giáng sinh an lành, hạnh phúc bên gia đình.</p>
+            <p>Hy vọng mọi điều may mắn nhất sẽ đến với bạn!</p>
+            <p class="text-right">Từ: ♥Tr Van Khoan♥</p>
+          </div>
         </div>
       </div>
     </div>
+
     <script src="noel.js"></script>
     <script>
       document.body.addEventListener("click", function () {

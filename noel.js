@@ -1,63 +1,23 @@
+const startButton = document.getElementById("startButton");
+const welcomeScreen = document.getElementById("welcomeScreen");
+const mainContent = document.getElementById("mainContent");
+const userNameInput = document.getElementById("userName");
+const displayName = document.getElementById("displayName");
+const audio = document.getElementById("audio");
 const showButton = document.getElementById("showButton");
-const christmasMessage = document.getElementById("as");
+const guideInfo = document.getElementById("guideInfo");
+const closeButton = document.getElementById("closeButton");
 
+// Đóng thiệp
+closeButton.addEventListener("click", function () {
+  guideInfo.classList.add("hidden");
+  showButton.classList.remove("hidden"); // Hiện nút "Mở lại" khi đóng thiệp
+});
+
+// Mở lại thiệp
 showButton.addEventListener("click", function () {
-  if (christmasMessage.style.display === "none") {
-    christmasMessage.style.display = "block";
-  } else {
-    christmasMessage.style.display = "none";
-  }
-});
-document.getElementById("closeButton").addEventListener("click", function () {
-  document.getElementById("as").style.display = "block";
-});
-
-document.getElementById("showButton").addEventListener("click", function () {
-  var guideInfo = document.getElementById("guideInfo");
-  var button = document.getElementById("showButton");
-
-  button.classList.add("hidden");
-
   guideInfo.classList.remove("hidden");
-  guideInfo.classList.add("show");
-});
-
-document.getElementById("showButton").addEventListener("click", function () {
-  var guideInfo = document.getElementById("guideInfo");
-  var button = document.getElementById("showButton");
-
-  button.classList.add("hidden");
-
-  guideInfo.classList.remove("hidden");
-  guideInfo.classList.add("show");
-});
-
-document.getElementById("closeButton").addEventListener("click", function () {
-  var guideInfo = document.getElementById("guideInfo");
-  var button = document.getElementById("showButton");
-
-  guideInfo.classList.remove("show");
-  setTimeout(function () {
-    guideInfo.classList.add("hidden");
-    button.classList.remove("hidden");
-  }, 500);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  var encodedText =
-    "&#68;&#101;&#115;&#105;&#103;&#110;&#32;&#98;&#121;&#32;&#80;&#97;&#110;&#98;&#97;&#112;";
-  var footer = document.createElement("a");
-  footer.innerHTML = encodedText;
-  document.body.appendChild(footer);
-});
-const treeIcon = document.querySelector(".tree-icon");
-
-treeIcon.addEventListener("mouseenter", function () {
-  treeIcon.classList.add("shake-animation");
-
-  treeIcon.addEventListener("animationend", function () {
-    treeIcon.classList.remove("shake-animation");
-  });
+  showButton.classList.add("hidden");
 });
 
 function createSnowflakes() {
@@ -65,20 +25,44 @@ function createSnowflakes() {
   snowflakesContainer.classList.add("snowflakes");
   document.body.appendChild(snowflakesContainer);
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 60; i++) {
     const snowflake = document.createElement("div");
     snowflake.classList.add("snowflake");
-
-    const size = Math.random() * 10 + 5;
+    const size = Math.random() * 8 + 4;
     snowflake.style.width = `${size}px`;
     snowflake.style.height = `${size}px`;
     snowflake.style.left = `${Math.random() * 100}vw`;
-    snowflake.style.animationDuration = `${Math.random() * 2 + 3}s`;
-    snowflake.style.animationDelay = `${Math.random() * 20}s`;
+    snowflake.style.animationDuration = `${Math.random() * 3 + 5}s`;
+    snowflake.style.animationDelay = `${Math.random() * 5}s`;
     snowflake.style.setProperty("--random-x", Math.random());
-
     snowflakesContainer.appendChild(snowflake);
   }
 }
 
-window.onload = createSnowflakes;
+startButton.addEventListener("click", function () {
+  const name = userNameInput.value.trim();
+  if (name !== "") {
+    displayName.innerText = name;
+
+    // Ẩn màn hình chào
+    welcomeScreen.style.opacity = "0";
+
+    setTimeout(() => {
+      welcomeScreen.classList.add("hidden");
+
+      // Hiện nội dung chính và thiệp
+      mainContent.classList.remove("hidden");
+      guideInfo.classList.remove("hidden");
+
+      // Bật nhạc
+      audio
+        .play()
+        .catch((err) =>
+          console.log("Nhạc chưa chạy được do trình duyệt chặn: ", err)
+        );
+      createSnowflakes();
+    }, 800);
+  } else {
+    alert("Bạn vui lòng nhập tên để nhận quà nhé! ❤️");
+  }
+});

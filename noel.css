@@ -1,3 +1,67 @@
+.welcome-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px #f56060;
+  border: 3px solid #f56060;
+}
+
+.welcome-title {
+  font-family: "Merry", cursive;
+  color: #ce3220;
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+#userName {
+  width: 250px;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: block;
+  transition: 0.3s;
+}
+
+#userName:focus {
+  border-color: #f56060;
+  box-shadow: 0 0 10px rgba(245, 96, 96, 0.3);
+}
+
+#startButton {
+  background: #ce3220;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#startButton:hover {
+  background: #ff0000;
+  transform: scale(1.1);
+}
+
+/* Hiệu ứng ẩn hiện mượt mà */
+.opacity-0 {
+  opacity: 0;
+}
+#mainContent {
+  transition: opacity 1.5s ease;
+}
+
+.recipient-name {
+  font-weight: bold;
+  color: #ce3220;
+  text-align: center;
+  font-size: 18px !important;
+  margin-top: 10px;
+}
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
 @font-face {
@@ -5,6 +69,52 @@
   src: url("./Merry.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Amatic+SC:wght@400;700&display=swap");
+
+.card .details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  z-index: -1;
+  margin-top: 65px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card .details p {
+  font-size: 15px;
+  line-height: 1.8 !important;
+  transform: rotate(-5deg);
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  color: #013243;
+  font-family: "Indie Flower", cursive;
+}
+.card .details h4,
+.card .details .color.margin {
+  font-family: "Amatic SC", cursive;
+  font-size: 26px;
+  margin-bottom: 10px;
+  transform: rotate(-7deg);
+  text-align: center;
+}
+.recipient-name,
+.text-right {
+  font-family: "Indie Flower", cursive;
+  font-weight: bold !important;
+}
+
+.recipient-name #displayName {
+  font-family: "Amatic SC", cursive;
+  font-size: 24px;
+  color: #ce3220;
 }
 
 body {
@@ -245,9 +355,6 @@ h4 {
 .color {
   color: #ce3220;
 }
-.hidden {
-  display: none !important; /* Đảm bảo ẩn hoàn toàn khi có lớp này */
-}
 
 .card {
   color: #013243;
@@ -353,4 +460,31 @@ h4 {
 
 .text-right {
   text-align: right;
+}
+
+.hidden {
+  display: none !important;
+}
+#guideInfo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1001; /* Cao hơn .card */
 }
